@@ -1,11 +1,241 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Portafolio de Estudio - Jeimy González</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Índice de Estudio — Jeimy González</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F3ECDC;
+    --paper-card: #FBF7EC;
+    --ink: #22303F;
+    --kraft: #C9AD7F;
+    --stamp: #9E3B34;
+    --line: #C3B392;
+    --accent: #3F6357;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 3px),
+      var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- HERO ---------- */
+  .drawer{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 64px 24px 32px;
+    text-align: left;
+  }
+
+  .drawer-label{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    margin-bottom: 20px;
+  }
+
+  h1{
+    font-family: 'Special Elite', monospace;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .drawer p.sub{
+    max-width: 56ch;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #4A5A68;
+    margin: 0 0 8px;
+  }
+
+  .drawer .meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: #7A6C4E;
+    margin-top: 18px;
+  }
+
+  hr.divider{
+    max-width: 920px;
+    margin: 8px auto 0;
+    border: none;
+    border-top: 2px solid var(--ink);
+  }
+  hr.divider::after{ content:''; }
+
+  /* ---------- CATALOG GRID ---------- */
+  .catalog{
+    max-width: 920px;
+    margin: 40px auto 100px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+  }
+
+  .card{
+    position: relative;
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    box-shadow: 3px 3px 0 rgba(34,48,63,0.08);
+    padding: 22px 20px 20px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 190px;
+  }
+
+  .card:hover, .card:focus-visible{
+    transform: translate(-2px,-2px);
+    box-shadow: 5px 5px 0 rgba(34,48,63,0.16);
+    outline: none;
+  }
+
+  .card:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .card::before{
+    /* punch hole */
+    content:'';
+    position:absolute;
+    top: 14px; left: 14px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .card .code{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--stamp);
+    margin-left: 26px;
+    margin-bottom: 10px;
+  }
+
+  .card h2{
+    font-family: 'Special Elite', monospace;
+    font-weight: 400;
+    font-size: 1.25rem;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .card p{
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #4A5A68;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .card .stamp{
+    align-self: flex-end;
+    margin-top: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px dashed var(--accent);
+    padding: 3px 8px;
+    transform: rotate(-2deg);
+  }
+
+  /* empty slot card (placeholder for future work) */
+  .card.empty{
+    border-style: dashed;
+    background: transparent;
+    box-shadow: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #9A8C6E;
+  }
+  .card.empty:hover{ transform:none; box-shadow:none; }
+  .card.empty::before{ display:none; }
+
+  footer{
+    max-width: 920px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: #8A7C5E;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card{ transition:none; }
+  }
+</style>
 </head>
 <body>
-  <h1>Mi Portafolio de Estudio</h1>
-  <p>Aquí voy a compartir documentos interactivos que he creado para estudiar.</p>
+
+  <div class="drawer">
+    <span class="drawer-label">USAC · Ciencias y Sistemas</span>
+    <h1>Índice de Estudio</h1>
+    <p class="sub">Un fichero de los documentos interactivos que voy creando mientras estudio — cada tarjeta es un tema, un curso, una práctica.</p>
+    <p class="meta">Jeimy González — actualizado continuamente</p>
+  </div>
+  <hr class="divider">
+
+  <div class="catalog">
+
+    <a class="card" href="./calculo/index.html">
+      <span class="code">MAT · GEOMETRÍA ANALÍTICA</span>
+      <h2>Cálculo Vectorial</h2>
+      <p>Guía interactiva de vectores en 3D y geometría analítica orientada a examen.</p>
+      <span class="stamp">interactivo</span>
+    </a>
+
+    <a class="card" href="./ipc1/index.html">
+      <span class="code">CC · IPC1</span>
+      <h2>Java desde cero</h2>
+      <p>Estructuras de datos construidas a mano y proyectos con Java Swing.</p>
+      <span class="stamp">interactivo</span>
+    </a>
+
+    <a class="card" href="./mantenimiento/index.html">
+      <span class="code">TALLER · PRÁCTICAS INICIALES</span>
+      <h2>Mantenimiento de Laptop</h2>
+      <p>Informe interactivo de diagnóstico y mantenimiento de equipo.</p>
+      <span class="stamp">interactivo</span>
+    </a>
+
+    <div class="card empty">
+      <p>Próxima ficha…</p>
+    </div>
+
+  </div>
+
+  <footer>
+    github.com/JeimyGonz/Portafolio-de-Estudio
+  </footer>
+
 </body>
 </html>
