@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semestre 4 — Materias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black: #0A0806;
+    --panel: #16110D;
+    --cream: #EDE6D5;
+    --coral: #D94433;
+    --olive: #2B2A22;
+    --dim: #8A8072;
+  }
+  *{ box-sizing: border-box; }
+body{
+  margin: 0;
+  background-image: url('./imagenes/imagen1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--cream);
+  font-family: 'IBM Plex Mono', monospace;
+}
+  a{ text-decoration:none; color:inherit; }
+
+  /* ============ SEMESTRE 4 — SECCIÓN EDITORIAL ============ */
+  .sem4-section{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 60px 24px 90px;
+  }
+
+  .sem4-header{
+    position: relative;
+    display:flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 4px solid var(--coral);
+    padding-bottom: 18px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .sem4-header .big-num{
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.2rem, 10vw, 6rem);
+    line-height: 0.85;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+  }
+  .sem4-header .big-num span{ color: var(--coral); }
+
+  .sem4-header .meta{
+    text-align: right;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+    line-height: 1.8;
+  }
+  .sem4-header .meta strong{ color: var(--coral); }
+
+  .sem4-sub{
+    font-family: 'Anton', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin: 0 0 40px;
+  }
+  .sem4-sub span{ color: var(--coral); }
+
+  /* ============ MOSAICOS DE MATERIAS ============ */
+  .materias-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 18px;
+  }
+
+  .materia{
+    position: relative;
+    background: var(--panel);
+    border: 1px solid #2A241C;
+    padding: 24px 18px 20px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+    /* borde recortado tipo "papel rasgado" */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 96% 100%, 90% 94%, 84% 100%, 78% 94%, 72% 100%, 66% 94%, 60% 100%, 54% 94%, 48% 100%, 42% 94%, 36% 100%, 30% 94%, 24% 100%, 18% 94%, 12% 100%, 6% 94%, 0% 100%);
+    padding-bottom: 34px;
+  }
+
+  .materia:hover, .materia:focus-visible{
+    transform: translateY(-4px);
+    border-color: var(--coral);
+    outline: none;
+  }
+
+  .materia .num-tag{
+    font-family: 'Anton', sans-serif;
+    font-size: 2.4rem;
+    color: rgba(217,68,51,0.35);
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    line-height: 1;
+  }
+
+  .materia .code{
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--coral);
+    text-transform: uppercase;
+  }
+
+  .materia h3{
+    font-family: 'Anton', sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--cream);
+    margin: 10px 0 0;
+    line-height: 1.1;
+  }
+
+  .materia .status{
+    font-size: 0.68rem;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* barra vertical roja decorativa a la izquierda de cada tarjeta */
+  .materia::before{
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 34px;
+    width: 4px;
+    background: var(--coral);
+  }
+
+  @media (prefers-reduced-motion: reduce){ .materia{ transition:none; } }
+</style>
+</head>
+<body>
+
+  <div class="sem4-section">
+
+    <div class="sem4-header">
+      <div class="big-num">SEMESTRE<span>·</span>04</div>
+      <div class="meta">USAC — CC Y SISTEMAS<br><strong></strong> MATERIAS REGISTRADAS</div>
+    </div>
+
+    <p class="sem4-sub">Guia de estudio <span> cuarto semestre</span></p>
+
+    <div class="materias-grid">
+
+      <a class="materia" href="./semestre4/materia1/index.html">
+        <span class="num-tag">01</span>
+        <span class="code">SEM-04 · MAT-01</span>
+        <h3>Matematica Intermedia 2</h3>
+        <span class="status">próximamente</span>
+      </a>
+
+      <a class="materia" href="./semestre4/materia2/index.html">
+        <span class="num-tag">02</span>
+        <span class="code">SEM-04 · MAT-02</span>
+        <h3>Matematica Intermedia 3</h3>
+        <span class="status">próximamente</span>
+      </a>
+
+      <a class="materia" href="./semestre4/materia3/index.html">
+        <span class="num-tag">03</span>
+        <span class="code">SEM-04 · MAT-03</span>
+        <h3>Materia 3</h3>
+        <span class="status">próximamente</span>
+      </a>
+
+      <a class="materia" href="./semestre4/materia4/index.html">
+        <span class="num-tag">04</span>
+        <span class="code">SEM-04 · MAT-04</span>
+        <h3>Materia 4</h3>
+        <span class="status">próximamente</span>
+      </a>
+
+      <a class="materia" href="./semestre4/materia5/index.html">
+        <span class="num-tag">05</span>
+        <span class="code">SEM-04 · MAT-05</span>
+        <h3>Materia 5</h3>
+        <span class="status">próximamente</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
